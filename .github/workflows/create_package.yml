@@ -21,9 +21,10 @@ jobs:
         env:
           REPO: '${{ github.event.inputs.repo-name }}'
           GITHUB_TOKEN: '${{ secrets.ORG_ADMIN_TOKEN }}'
-      - name: Updating package manifest.
-        uses: Snapkg/workflows/.github/workflows/update-package-manifest.yml@main
-        with:
-          package: ${{ github.inputs.repo-name }}
-          repo: "main"
-          manifest: '{"name": "${{github.inputs.repo-name}}"}'
+  update-package-manifest:
+    name: Updating package manifest.
+    uses: Snapkg/workflows/.github/workflows/update-package-manifest.yml@main
+    with:
+      package: ${{ github.inputs.repo-name }}
+      repo: "main"
+      manifest: '{"name": "${{github.inputs.repo-name}}"}'
