@@ -3,12 +3,11 @@
 name: Sync Repo Submodules
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: ~
 
 jobs:
   sync-repo-submodules:
     runs-on: ubuntu/latest
-    name: Syncing Repo Submodules
     steps:
       - name: Checkout repository
         run: echo hello world
