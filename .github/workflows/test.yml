@@ -1,0 +1,10 @@
+name: test
+
+on:
+  workflow_dispatch: ~
+
+jobs:
+  sync-repo-submodules:
+    runs-on: ubuntu/latest
+    steps:
+        - run: echo "hello world"
