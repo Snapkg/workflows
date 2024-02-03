@@ -1,10 +1,21 @@
-name: Sync Repo Submodules
+name: test
 
 on:
   workflow_dispatch: ~
 
 jobs:
   sync-repo-submodules:
-    runs-on: ubuntu/latest
+    runs-on: ubuntu-latest
     steps:
-        - run: echo "hello world"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          repository: 'Snapkg/repos'
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
+      - name: Update submodules
+        run: git submodule update --recursive --remote
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Synced submodules"
