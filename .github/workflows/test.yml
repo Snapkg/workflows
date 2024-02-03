@@ -1,5 +1,5 @@
 #hello world!
-name: test
+name: nottest
 on:
   workflow_dispatch: ~
 
