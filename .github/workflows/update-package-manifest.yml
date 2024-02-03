@@ -13,29 +13,11 @@ on:
         default: "main"
         type: string
         required: true
-      update-package-schema:
-        description: "Whether to update the manifest schema version"
-        default: "false"
+      manifest:
+        description: "A JSON object containing the properties and values that you'd like to change"
+        default: "{}"
         type: string
         required: true
-      package-schema:
-        description: "The schema version of the manifest"
-        default: "0.2"
-        type: string
-      package-version:
-        description: "The version of the package"
-      package-issues:
-        description: "The url for the package's issue tracker"
-      package-maintainer-github:
-        description: "The package maintainers github username"
-      package-maintainer-snap:
-        description: "The package maintainers Snap! username"
-      package-developer-github:
-        description: "The package developers github username"
-      package-developer-snap:
-        description: "The package developers Snap! username"
-      package-sources:
-        description: "The package's sources (in JSON)"
         
 jobs:
   update-package-manifest:
@@ -52,11 +34,11 @@ jobs:
         with:
           token: ${{ secrets.ORG_ADMIN_TOKEN }}
           repository: 'Snapkg/${{ github.event.inputs.package }}'
-          ref: ${{ github.event.inputs.package-branch }}
+          ref: ${{ github.event.inputs.branch }}
       - name: Update manifest.json
         run: >
           ls &&
-          jq '.name = "${{ github.event.inputs.package}}"' manifest.json > output.json && mv output.json manifest.json
+          jq --argjson update '${{ github.event.inputs.manifest }}' '. + $update' manifest.json  > output.json && mv output.json manifest.json
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
