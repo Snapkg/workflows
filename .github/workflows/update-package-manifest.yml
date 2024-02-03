@@ -1,6 +1,27 @@
 name: Update Package Manifest
 
 on:
+  workflow_call:
+    inputs:
+      package:
+        description: "The name of the package to be updated"
+        default: "template"
+        type: string
+        required: true
+      branch:
+        description: "The name of the branch to be updated"
+        default: "main"
+        type: string
+        required: true
+      manifest:
+        description: "A JSON object containing the properties and values that you'd like to change"
+        default: "{}"
+        type: string
+        required: true
+    secrets:
+      ORG_ADMIN_TOKEN:
+        required: true
+        
   workflow_dispatch:
     inputs:
       package:
