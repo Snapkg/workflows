@@ -45,7 +45,7 @@ jobs:
         with:
           token: ${{ secrets.ORG_ADMIN_TOKEN }}
           repository: 'Snapkg/${{ github.event.inputs.package }}'
-          branch: ${{ github.event.inputs.package-branch }}
+          ref: ${{ github.event.inputs.package-branch }}
       - name: Update manifest.json
         run: >
           echo ls &&
