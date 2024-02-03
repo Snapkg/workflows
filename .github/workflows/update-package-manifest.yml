@@ -50,6 +50,8 @@ jobs:
         run: >
           sudo apt-get update &&
           sudo apt-get -y install jq
+      - name: TEST
+        run: 'echo "DEBUG: ${{inputs}} ${{github}}"'
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
