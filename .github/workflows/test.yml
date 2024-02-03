@@ -1,12 +1,10 @@
-#hello world!
-name: nottest
+name: test
+
 on:
   workflow_dispatch: ~
 
 jobs:
-  log-the-inputs:
-    runs-on: ubuntu-latest
+  sync-repo-submodules:
+    runs-on: ubuntu/latest
     steps:
-      - run: |
-          echo "hello world"
-#hi
+        - run: echo "hello world"
