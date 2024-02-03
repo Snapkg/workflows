@@ -1,3 +1,4 @@
+#hello world!
 name: test
 on:
   workflow_dispatch: ~
@@ -8,3 +9,4 @@ jobs:
     steps:
       - run: |
           echo "hello world"
+#hi
