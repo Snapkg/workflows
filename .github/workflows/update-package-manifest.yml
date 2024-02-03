@@ -1,0 +1,52 @@
+name: Update Package Manifest
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "The name of the package to be updated"
+        default: "template"
+        required: true
+      branch:
+        description: "The name of the branch to be updated"
+        default: "master"
+        required: true
+      package-schema:
+        description: "The schema version of the manifest"
+      package-version:
+        description: "The version of the package"
+      package-issues:
+        description: "The url for the package's issue tracker"
+      package-maintainer-github:
+        description: "The package maintainers github username"
+      package-maintainer-snap:
+        description: "The package maintainers Snap! username"
+      package-developer-github:
+        description: "The package developers github username"
+      package-developer-snap:
+        description: "The package developers Snap! username"
+      package-sources:
+        description: "The package's sources (in JSON)"
+        
+      
+        
+
+jobs:
+  sync-repo-submodules:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ORG_ADMIN_TOKEN }}
+          repository: 'Snapkg/repos'
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
+      - name: Update submodules
+        run: git submodule update --recursive --remote
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Synced submodules"
