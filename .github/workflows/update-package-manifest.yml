@@ -13,6 +13,11 @@ on:
         default: "main"
         type: string
         required: true
+      update-package-schema:
+        description: "Whether to update the manifest schema version"
+        default: false
+        type: boolean
+        required: true
       package-schema:
         description: "The schema version of the manifest"
         default: "0.2"
