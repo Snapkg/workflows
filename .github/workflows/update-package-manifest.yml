@@ -15,8 +15,8 @@ on:
         required: true
       update-package-schema:
         description: "Whether to update the manifest schema version"
-        default: false
-        type: boolean
+        default: "false"
+        type: string
         required: true
       package-schema:
         description: "The schema version of the manifest"
