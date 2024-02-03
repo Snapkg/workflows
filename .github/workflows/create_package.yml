@@ -19,7 +19,7 @@ jobs:
       - name: Creating GitHub Organization Repository
         run: gh repo create --public Snapkg/$REPO --template Snapkg/template
         env:
-          REPO: '${{ github.event.inputs.repo-name }}'
+          REPO: '${{ inputs.repo-name }}'
           GITHUB_TOKEN: '${{ secrets.ORG_ADMIN_TOKEN }}'
   update-package-manifest:
     name: Updating package manifest.
@@ -29,6 +29,6 @@ jobs:
     with:
       package: ${{ github.inputs.repo-name }}
       branch: "main"
-      manifest: '{"name": "${{github.inputs.repo-name}}"}'
+      manifest: '{"name": "${{ inputs.repo-name }}"}'
     secrets:
       ORG_ADMIN_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
