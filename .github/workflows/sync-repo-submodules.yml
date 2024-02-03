@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.ORG_ADMIN_TOKEN }}
           repository: 'Snapkg/repos'
       - name: Checkout submodules
         run: git submodule update --init --recursive
