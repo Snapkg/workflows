@@ -31,7 +31,7 @@ on:
         description: "The package's sources (in JSON)"
         
 jobs:
-  sync-repo-submodules:
+  update-package-manifest:
     runs-on: ubuntu-latest
     permissions:
       contents: write
