@@ -9,5 +9,8 @@ jobs:
   sync-repo-submodules:
     runs-on: ubuntu/latest
     name: Syncing Repo Submodules
+    steps:
+      - name: Checkout repository
+        run: "echo 'hello world'"
     
       
