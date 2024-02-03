@@ -27,7 +27,7 @@ jobs:
     permissions:
       contents: write
     with:
-      package: ${{ github.inputs.repo-name }}
+      package: ${{ inputs.repo-name }}
       branch: "main"
       manifest: '{"name": "${{ inputs.repo-name }}"}'
     secrets:
