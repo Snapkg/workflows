@@ -26,5 +26,5 @@ jobs:
     uses: Snapkg/workflows/.github/workflows/update-package-manifest.yml@main
     with:
       package: ${{ github.inputs.repo-name }}
-      repo: "main"
+      branch: "main"
       manifest: '{"name": "${{github.inputs.repo-name}}"}'
