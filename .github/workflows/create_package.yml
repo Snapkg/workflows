@@ -24,6 +24,8 @@ jobs:
   update-package-manifest:
     name: Updating package manifest.
     uses: Snapkg/workflows/.github/workflows/update-package-manifest.yml@main
+    permissions:
+      contents: write
     with:
       package: ${{ github.inputs.repo-name }}
       branch: "main"
