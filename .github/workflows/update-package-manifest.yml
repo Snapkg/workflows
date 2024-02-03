@@ -48,7 +48,7 @@ jobs:
           branch: ${{ github.event.inputs.package-branch }}
       - name: Update manifest.json
         run: >
-          echo ls
+          echo ls &&
           jq '.name = "${{ github.event.inputs.package}}"' manifest.json > output.json && mv output.json manifest.json
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
