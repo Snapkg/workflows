@@ -9,7 +9,7 @@ jobs:
   sync-repo-submodules:
     runs-on: ubuntu/latest
     steps:
-        run: echo hello world
+        - run: echo hello world
       #- name: Checkout repository
       #  uses: actions/checkout@v4
       #  with:
