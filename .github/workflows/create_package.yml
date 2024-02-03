@@ -28,3 +28,5 @@ jobs:
       package: ${{ github.inputs.repo-name }}
       branch: "main"
       manifest: '{"name": "${{github.inputs.repo-name}}"}'
+    secrets:
+      ORG_ADMIN_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
